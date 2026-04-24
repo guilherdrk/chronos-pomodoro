@@ -1,16 +1,15 @@
-import "./styles/theme.css";
-import "./styles/global.css";
 import { Container } from "./components/Container";
 import { Heading } from "./components/Heading";
+import { Logo } from "./components/Logo";
 
+import "./styles/theme.css";
+import "./styles/global.css";
 
 export const App = () => {
-  console.log("oi");
   return (
     <>
         <Container>
-            <Heading>LOGO</Heading>
-            
+            <Logo />
         </Container>
         <Container>
             <Heading>MENU</Heading>
