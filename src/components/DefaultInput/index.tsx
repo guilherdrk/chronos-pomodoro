@@ -12,7 +12,7 @@ export const DefaultInput = (( { type, id, labelText, ...rest }: DefaultInputPro
   return (
     <>
       <label htmlFor={id}>{labelText}</label>
-      <input className={styles.input} id={id} type={type} {...rest} />
+      <input className= {styles.input} id={id} type={type} {...rest} />
     </>
 
   );
