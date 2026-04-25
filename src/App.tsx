@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/immutability */
 import { Container } from "./components/Container";
 import { Logo } from "./components/Logo";
 
@@ -12,6 +13,7 @@ import { PlayCircleIcon } from "lucide-react";
 import { Footer } from "./components/Footer";
 
 export const App = () => {
+
   return (
     <>
       <Container>
@@ -27,7 +29,7 @@ export const App = () => {
         <form className="form" action="">
           <div className="formRow">
             <DefaultInput
-              labelText="Task: "
+              labelText='Task'
               id="meuInput"
               type="text"
             />
@@ -39,13 +41,13 @@ export const App = () => {
             <Cycles />
           </div>
           <div className="formRow">
-            <DefaultButton icon={<PlayCircleIcon />}/>
+            <DefaultButton icon={<PlayCircleIcon />} />
           </div>
         </form>
       </Container>
 
       <Container>
-        <Footer/>
+        <Footer />
       </Container>
     </>
   );
