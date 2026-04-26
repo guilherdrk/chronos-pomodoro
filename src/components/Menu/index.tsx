@@ -6,11 +6,18 @@ import { useState } from "react";
 type AvailableThemes = "dark" | "light";
 
 export const Menu = () => {
-  const [theme] = useState<AvailableThemes>("dark");
+  const [theme, setTheme] = useState<AvailableThemes>("dark");
 
   function handleThemeChange(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     event.preventDefault();
     console.log("clicado");
+
+    setTheme(prevTheme => {
+      const nextTheme = prevTheme === 'dark' ? 'light' : 'dark' ;
+      document.documentElement.setAttribute('data-theme', nextTheme);
+      return nextTheme;
+    });
+    
   }
 
   return (
