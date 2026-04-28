@@ -1,5 +1,7 @@
 import type { TaskModel } from "./TaskModel"
 
+// Estado -> componente -> filhos
+
 export type TaskStateModel = {
   tasks: TaskModel[];
   secondsRemaining: number;
@@ -11,4 +13,5 @@ export type TaskStateModel = {
     shortBreakTime: number;
     longBreakTime: number;
   };
+  
 };
