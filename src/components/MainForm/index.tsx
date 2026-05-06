@@ -1,4 +1,4 @@
-import { PlayCircleIcon } from "lucide-react"
+import { PlayCircleIcon, StopCircleIcon } from "lucide-react"
 import { Cycles } from "../Cycles"
 import { DefaultInput } from "../DefaultInput"
 import { DefaultButton } from "../DefaultButton"
@@ -57,6 +57,17 @@ export const MainForm = (() => {
 
   }
 
+  function handleInterruptTask(){
+    setState(prevState => {
+      return {
+        ...prevState,
+        activeTask: null,
+        secondsRemaining: 0,
+        formatedSecondsRemaining: '00:00',
+      };
+    });
+  }
+
   return (
     <form onSubmit={handleCreateNewTask} className="form" action="">
       <div className="formRow">
@@ -80,7 +91,27 @@ export const MainForm = (() => {
       )}
 
       <div className="formRow">
-        <DefaultButton icon={<PlayCircleIcon />} />
+        {!state.activeTask && (
+          <DefaultButton
+            aria-label='iniciar nova tarefa'
+            title="iniciar nova tarefa"
+            type='submit'
+            icon={<PlayCircleIcon />}
+            key='botao_submit'
+        />
+        )} 
+        {!!state.activeTask &&  (
+          <DefaultButton
+            aria-label='Interromper tarefa atual'
+            title="Interromper tarefa atual"
+            color="red"
+            type='button' icon={<StopCircleIcon />}
+            onClick={handleInterruptTask}
+            key='botao_button'
+          />  
+          ) 
+        }
+
       </div>
     </form>
   )
