@@ -18,14 +18,14 @@ export const MainForm = (() => {
   const nextCycle = getNextCycle(state.currentCycle);
   const nextCycleType = getNextCycleType(nextCycle);
 
-  function handleCreateNewTask(event: React.SubmitEvent<HTMLFormElement>){
+  function handleCreateNewTask(event: React.SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
-    
-    if(taskNameInput.current === null) return;
+
+    if (taskNameInput.current === null) return;
 
     const taskName = taskNameInput.current.value.trim();
-    
-    if(!taskName){
+
+    if (!taskName) {
       alert('Digite o nome da tarefa: ')
       return;
     }
@@ -45,8 +45,8 @@ export const MainForm = (() => {
     setState(prevState => {
       return {
         ...prevState,
-        config: {...prevState.config},
-        activeTask: newTask, 
+        config: { ...prevState.config },
+        activeTask: newTask,
         currentCycle: nextCycle,
         secondsRemaining: secondsRemaining, //conferir
         formatedSecondsRemaining: formatSecondsToMinutes(secondsRemaining), //conferir
@@ -71,9 +71,13 @@ export const MainForm = (() => {
       <div className="formRow">
         <p>Proximo intervalo é de 25 min.</p>
       </div>
-      <div className="formRow">
-        <Cycles />
-      </div>
+
+      {state.currentCycle > 0 && (
+        <div className="formRow">
+          <Cycles />
+        </div>
+      )}
+
       <div className="formRow">
         <DefaultButton icon={<PlayCircleIcon />} />
       </div>
