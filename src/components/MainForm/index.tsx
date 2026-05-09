@@ -8,6 +8,7 @@ import { useTaskContext } from "../../contexts/TaskContext/useTaskContext"
 import { getNextCycle } from "../../utils/getNextCycle"
 import { getNextCycleType } from "../../utils/getNextCycleType"
 import { TaskActionTypes } from "../../contexts/TaskContext/taskActions"
+import { Tips } from "../Tips"
 
 export const MainForm = (() => {
 
@@ -18,18 +19,15 @@ export const MainForm = (() => {
   const nextCycle = getNextCycle(state.currentCycle);
   const nextCycleType = getNextCycleType(nextCycle);
 
+
   function handleCreateNewTask(event: React.SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
-
     if (taskNameInput.current === null) return;
-
     const taskName = taskNameInput.current.value.trim();
-
     if (!taskName) {
       alert('Digite o nome da tarefa: ')
       return;
     }
-
     const newTask: TaskModel = {
       id: Date.now().toString(),
       name: taskName,
@@ -39,13 +37,11 @@ export const MainForm = (() => {
       duration: state.config[nextCycleType],
       type: nextCycleType,
     };
-
-  
-    dispatch({type: TaskActionTypes.START_TASK, payload: newTask});
+    dispatch({ type: TaskActionTypes.START_TASK, payload: newTask });
   }
 
-  function handleInterruptTask(){
-    dispatch({type: TaskActionTypes.INTERRUPT_TASK })
+  function handleInterruptTask() {
+    dispatch({ type: TaskActionTypes.INTERRUPT_TASK })
   }
 
   return (
@@ -61,7 +57,7 @@ export const MainForm = (() => {
         />
       </div>
       <div className="formRow">
-        <p>Proximo intervalo é de 25 min.</p>
+        <Tips />
       </div>
 
       {state.currentCycle > 0 && (
@@ -78,9 +74,9 @@ export const MainForm = (() => {
             type='submit'
             icon={<PlayCircleIcon />}
             key='botao_submit'
-        />
-        )} 
-        {!!state.activeTask &&  (
+          />
+        )}
+        {!!state.activeTask && (
           <DefaultButton
             aria-label='Interromper tarefa atual'
             title="Interromper tarefa atual"
@@ -88,8 +84,8 @@ export const MainForm = (() => {
             type='button' icon={<StopCircleIcon />}
             onClick={handleInterruptTask}
             key='botao_button'
-          />  
-          ) 
+          />
+        )
         }
 
       </div>
