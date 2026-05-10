@@ -19,4 +19,5 @@ self.onmessage = function (event) {
   }
   tick();
 
+
 };
