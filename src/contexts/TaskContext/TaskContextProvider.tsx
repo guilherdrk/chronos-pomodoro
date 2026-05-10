@@ -6,7 +6,6 @@ import { TimerWorkerManager } from "../../workers/timeWorkerManager";
 import { TaskActionTypes } from "./taskActions";
 
 
-
 type TaskContextProvierProps = {
   children: React.ReactNode;
 };
@@ -28,7 +27,6 @@ export function TaskContextProvider({ children }: TaskContextProvierProps) {
     }
   });
   useEffect(() => {
-
     if (!state.activeTask) {
       console.log('Worker terminado por falta de activeTask');
       worker.terminate();
