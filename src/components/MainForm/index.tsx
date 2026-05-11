@@ -19,7 +19,8 @@ export const MainForm = (() => {
   //ciclos
   const nextCycle = getNextCycle(state.currentCycle);
   const nextCycleType = getNextCycleType(nextCycle);
-
+  const lastTaskName = state.tasks[state.tasks.length - 1]?.name || '';
+  
 
   function handleCreateNewTask(event: React.SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -63,6 +64,7 @@ export const MainForm = (() => {
           placeholder="Digite algo"
           ref={taskNameInput}
           disabled={!!state.activeTask}
+          defaultValue={lastTaskName}
         />
       </div>
       <div className="formRow">

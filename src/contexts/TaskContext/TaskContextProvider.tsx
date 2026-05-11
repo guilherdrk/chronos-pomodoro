@@ -15,9 +15,6 @@ export function TaskContextProvider({ children }: TaskContextProvierProps) {
   const [state, dispatch] = useReducer(taskReducer, initialTaskState);
   const playBeepRef = useRef<ReturnType<typeof loadBeep> | null>(null);
 
-
-
-
   const worker = TimerWorkerManager.getInstance();
 
   // eslint-disable-next-line react-hooks/refs
@@ -43,14 +40,14 @@ export function TaskContextProvider({ children }: TaskContextProvierProps) {
       worker.terminate();
       return
     }
-
+    document.title = `${state.formatedSecondsRemaining} - Chronos Pomodoro`;
     worker.postMessage(state);
   }, [state]);
 
   useEffect(() => {
     if (state.activeTask && playBeepRef.current === null) {
       playBeepRef.current = loadBeep();
-    }else{
+    } else {
       playBeepRef.current = null;
     }
   }, [state.activeTask]);
