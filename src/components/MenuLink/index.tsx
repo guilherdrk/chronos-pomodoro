@@ -1,26 +1,26 @@
-import { Link } from 'react-router';
 import styles from './styles.module.css';
+import { RouterLink } from '../RouterLink';
 
 type MenuLinkProps = {
   title: string;
-  to: string
+  href: string;
   event?: React.MouseEventHandler<HTMLAnchorElement | undefined>;
   children: React.ReactNode;
 
 }
 
-export const MenuLink = (({ children, title, to, event, ...rest }: MenuLinkProps) => {
+export const MenuLink = (({ children, title, href, event, ...rest }: MenuLinkProps) => {
 
   return (
     <>
-      <Link
+      <RouterLink
         className={styles.menuLink}
-        to={to}
+        href={href}
         title={title}
         {...rest}
         onClick={event} >
         {children}
-      </Link>
+      </RouterLink>
     </>
   )
 });
