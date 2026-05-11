@@ -14,7 +14,7 @@ export const Menu = () => {
   function handleThemeChange(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     event.preventDefault();
     setTheme(prevTheme => {
-      const nextTheme = prevTheme === 'dark' ? 'light' : 'dark' ;
+      const nextTheme = prevTheme === 'dark' ? 'light' : 'dark';
       return nextTheme;
     });
   }
@@ -32,18 +32,18 @@ export const Menu = () => {
   return (
     <>
       <nav className={styles.menu}>
-        <MenuLink aria-label="Ir para Home" title="Ir para Home">
+        <MenuLink to="/" aria-label="Ir para Home" title="Ir para Home">
           <HouseIcon />
         </MenuLink>
-        <MenuLink aria-label="Ver Histórico" title="Ver Histórico">
+        <MenuLink to="#" aria-label="Ver Histórico" title="Ver Histórico">
           <HistoryIcon />
         </MenuLink>
-        <MenuLink aria-label="Configurações" title="Configurações">
+        <MenuLink to="#" aria-label="Configurações" title="Configurações">
           <SettingsIcon />
         </MenuLink>
-        <MenuLink aria-label="Mudar Tema" title="Mudar Tema" event={handleThemeChange} >
+        <MenuLink to="#" aria-label="Mudar Tema" title="Mudar Tema" event={handleThemeChange} >
           {/* {theme === 'dark' ? <SunIcon/> : <MoonIcon />} */}
-          { nextThemeIcon[theme]}
+          {nextThemeIcon[theme]}
         </MenuLink>
       </nav>
     </>
