@@ -7,7 +7,8 @@ type AvailableThemes = "dark" | "light";
 
 export const Menu = () => {
   const [theme, setTheme] = useState<AvailableThemes>(() => {
-    const storageTheme = localStorage.getItem('theme') as AvailableThemes || 'dark';
+    const storageTheme =
+     (localStorage.getItem('theme') as AvailableThemes) || 'dark';
     return storageTheme;
   });
 
