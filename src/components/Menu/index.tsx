@@ -36,7 +36,7 @@ export const Menu = () => {
         <MenuLink href="/" aria-label="Ir para Home" title="Ir para Home">
           <HouseIcon />
         </MenuLink>
-        <MenuLink href="#" aria-label="Ver Histórico" title="Ver Histórico">
+        <MenuLink href="/history/" aria-label="Ver Histórico" title="Ver Histórico">
           <HistoryIcon />
         </MenuLink>
         <MenuLink href="#" aria-label="Configurações" title="Configurações">
