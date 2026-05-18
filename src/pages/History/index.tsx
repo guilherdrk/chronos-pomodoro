@@ -6,6 +6,7 @@ import { Heading } from "../../components/Heading";
 import { TrashIcon } from "lucide-react";
 import { useTaskContext } from "../../contexts/TaskContext/useTaskContext";
 import { formatDate } from "../../utils/formatDate";
+import { getTaskStatus } from "../../utils/getTaskStatus";
 
 export const History = () => {
 
@@ -48,13 +49,11 @@ export const History = () => {
                     <td>{task.name}</td>
                     <td>{task.duration} min</td>
                     <td>{formatDate(task.startDate)}</td>
-                    <td>{task.completeDate}</td>
+                    <td>{getTaskStatus(task, state.activeTask)}</td>
                     <td>{task.type}</td>
                   </tr>
                 )
-              })}
-
-              
+              })}              
             </tbody>
           </table>
         </div>
